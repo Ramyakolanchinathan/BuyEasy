@@ -1,0 +1,27 @@
+﻿@model IEnumerable<CartViewModel>
+@{
+    ViewData["Title"] = "Billing Summary";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Billing Summary</h2>
+<table class="table">
+    <thead><tr><th>Product</th><th>Qty</th><th>Price</th></tr></thead>
+    <tbody>
+        @{
+            decimal total = 0;
+        }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Product.Name</td>
+                <td>@item.Quantity</td>
+                <td>₹@(item.Quantity * item.Product.Price)</td>
+            </tr>
+            total += item.Quantity * item.Product.Price;
+        }
+    </tbody>
+</table>
+<h3>Total: ₹@total</h3>
+<a class="btn btn-primary" href="/">Back to Home</a>
+
+}

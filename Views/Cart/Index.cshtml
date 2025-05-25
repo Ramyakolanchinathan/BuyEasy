@@ -1,0 +1,23 @@
+﻿@model List<CartViewModel>
+
+@{
+    ViewData["Title"] = "Your CartViewModel";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Your Cart</h2>
+<table class="table">
+    <thead>
+        <tr><th>Product</th><th>Quantity</th><th>Price</th></tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Product.Name</td>
+                <td>@item.Quantity</td>
+                <td>₹@(item.Quantity * item.Product.Price)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a class="btn btn-success" href="/Cart/Checkout">Proceed to Checkout</a>
